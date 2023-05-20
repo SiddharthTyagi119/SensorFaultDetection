@@ -35,6 +35,8 @@ class ModelPusher:
             os.makedirs(os.path.dirname(saved_model_path),exist_ok=True)
             shutil.copy(src=trained_model_path, dst=saved_model_path)
 
+
+
             #prepare artifact
             model_pusher_artifact = ModelPusherArtifact(saved_model_path=saved_model_path, model_file_path=model_file_path)
             return model_pusher_artifact
