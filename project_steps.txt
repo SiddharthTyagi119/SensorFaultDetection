@@ -1,0 +1,20 @@
+Add readme,logger,exception,setup file,activate env,requirements,.gitignore,main project folder with init file.
+
+Main project folder(sensor)-
+>>pipeline-it holds training file 
+>>data access-to connect with database
+>>components-it holds our main training file
+>>cloud storage- to store the artifacts on cloud
+>>configurations-it contain configurations that need to run the main training file
+>>constant-it is used to maintain variable declaration
+>>ml- used to define metrics and model estimator
+entity-
+>>config_entity-define the path to store artifacts
+>>artifacts_entity-define the artifacts
+
+Data ingestion-
+[mongo_db_connection.py>>database.py>>env.py>>s3_bucket.py>>application.py>>training_pipeline.py>>schema.yml>>
+config_entity>>artifct_entity>>sensor_data.py>>data_ingestion.py>>training_pipeline.py>>main.py]
+
+DataTransformation-
+[]

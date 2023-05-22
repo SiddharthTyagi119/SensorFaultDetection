@@ -1,3 +1,5 @@
+Steps for deployment---------
+
 create s3 bucket- sensor-bucket-training-2.
 a user with policies ec2 and s3 full access ,amazon ec2 containerregistry full access
 ecr-donkey123  --uri>>352713961665.dkr.ecr.ap-south-1.amazonaws.com/donkey123
@@ -5,18 +7,18 @@ ec2-myfirstec2
 key pair-sensor-key-pair
 install docker in ec2 ubuntu instance
 
-
-
-####
 configure as self hosted runner-
 create self hosted runner under github actions and perform all the steps
 reload the githb and activate runner. you will see you runner online
 add workflow file (ci/cd) 
 
 setup github secrets--
-AWS_ACCESS_KEY_ID=AKIAVEH3D6DA5Z4GGSSN
+AWS_ACCESS_KEY_ID=AKIAVEH3D6DA5Z4GGSSN . we created this under ec2 instance
 AWS_SECRET_ACCESS_KEY=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
 AWS_REGION=ap-south-1
 AWS_ECR_LOGIN_URI=352713961665.dkr.ecr.ap-south-1.amazonaws.com/donkey123
 ECR_REPOSITORY_NAME=donkey123
 MONGO_DB_URL=mongodb://localhost:27017
+
+paste them under security>>secrets>>actions
+install docker and create flask main.py
