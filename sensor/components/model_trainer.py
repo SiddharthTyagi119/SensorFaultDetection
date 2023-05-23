@@ -32,6 +32,8 @@ class ModelTrainer:
     
     def initiate_model_trainer(self)->ModelTrainerArtifact:
         try:
+
+            #loading the dataset
             train_file_path = self.data_transformation_artifact.transformed_train_file_path
             test_file_path = self.data_transformation_artifact.transformed_test_file_path
 
@@ -39,6 +41,7 @@ class ModelTrainer:
             train_arr = load_numpy_array_data(train_file_path)
             test_arr = load_numpy_array_data(test_file_path)
 
+            #cretaing i/p and target features for ttraining and testing
             x_train, y_train, x_test, y_test = (
                 train_arr[:, :-1],
                 train_arr[:, -1],
@@ -46,13 +49,16 @@ class ModelTrainer:
                 test_arr[:, -1],
             )
 
+            #trained xg boost model on train data
             model = self.train_model(x_train, y_train)
             y_train_pred = model.predict(x_train)
             classification_train_metric =  get_classification_score(y_true=y_train, y_pred=y_train_pred)
             
+            #checking accc is acceptable or not on training dataset
             if classification_train_metric.f1_score<=self.model_trainer_config.expected_accuracy:
                 raise Exception("Trained model is not good to provide expected accuracy")
             
+            #pred on testing data
             y_test_pred = model.predict(x_test)
             classification_test_metric = get_classification_score(y_true=y_test, y_pred=y_test_pred)
 
@@ -60,6 +66,7 @@ class ModelTrainer:
             #Overfitting and Underfitting
             diff = abs(classification_train_metric.f1_score-classification_test_metric.f1_score)
             
+            #diff b/w training and testing scores
             if diff>self.model_trainer_config.overfitting_underfitting_threshold:
                 raise Exception("Model is not good try to do more experimentation.")
 
@@ -67,6 +74,8 @@ class ModelTrainer:
             
             model_dir_path = os.path.dirname(self.model_trainer_config.trained_model_file_path)
             os.makedirs(model_dir_path,exist_ok=True)
+
+            #saving both model together
             sensor_model = SensorModel(preprocessor=preprocessor,model=model)
             save_object(self.model_trainer_config.trained_model_file_path, obj=sensor_model)
 
