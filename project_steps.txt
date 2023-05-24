@@ -12,6 +12,7 @@ entity-
 >>config_entity-define the path to store artifacts
 >>artifacts_entity-define the artifacts
 
+
 Data ingestion-
 [mongo_db_connection.py>>database.py>>env.py>>s3_bucket.py>>application.py>>training_pipeline.py>>schema.yml>>
 config_entity>>artifct_entity>>sensor_data.py>>data_ingestion.py>>training_pipeline.py>>main.py]
