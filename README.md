@@ -134,3 +134,4 @@ python main.py
 5. Launch your docker image in EC2
 
 # High Level Flowchart
+![Capture](https://github.com/SiddharthTyagi119/sensorfaultdetection/assets/52122171/b43f6cc1-e6a2-4ff8-8913-9b309c974ac9)
