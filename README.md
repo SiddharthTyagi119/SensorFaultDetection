@@ -125,3 +125,12 @@ then run
 ```
 python main.py
 ```
+
+# Description:
+1. Build docker image
+2. Push docker image to ECR
+3. Launch EC2
+4. Pull your image from ECR IN EC2
+5. Launch your docker image in EC2
+
+# High Level Flowchart

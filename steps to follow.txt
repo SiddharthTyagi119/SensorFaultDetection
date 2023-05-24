@@ -1,24 +1,56 @@
 Steps for deployment---------
 
-create s3 bucket- sensor-bucket-training-2.
-a user with policies ec2 and s3 full access ,amazon ec2 containerregistry full access
-ecr-donkey123  --uri>>352713961665.dkr.ecr.ap-south-1.amazonaws.com/donkey123
-ec2-myfirstec2
-key pair-sensor-key-pair
-install docker in ec2 ubuntu instance
+1. Login to AWS console.
 
-configure as self hosted runner-
-create self hosted runner under github actions and perform all the steps
-reload the githb and activate runner. you will see you runner online
-add workflow file (ci/cd) 
+2. Create an IAM user for deployment with the below specific policy access:
+a) Ec2 and S3 full access
+b) Amazon ECR container registry full access
 
-setup github secrets--
-AWS_ACCESS_KEY_ID=AKIAVEH3D6DA5Z4GGSSN . we created this under ec2 instance
-AWS_SECRET_ACCESS_KEY=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
-AWS_REGION=ap-south-1
-AWS_ECR_LOGIN_URI=352713961665.dkr.ecr.ap-south-1.amazonaws.com/donkey123
-ECR_REPOSITORY_NAME=donkey123
-MONGO_DB_URL=mongodb://localhost:27017
+ECR-To save your docker image in AWS
+Ec2- It is a virtual machine
+S3- To store artifacts and model
 
-paste them under security>>secrets>>actions
-install docker and create flask main.py
+3. Create a S3 bucket in ap-south-1 region.
+   Provide bucket name-buket1
+
+4. Create ECR registry 
+   URI-bjhsbybdhcbhc
+
+5. Create EC2 ubuntu VM
+   Key Pair-
+
+6. Open EC2 and install docker in EC2
+   sudo apt update -y
+   sudo apt upgrade
+   curl -fsSL https://get.docker.com -o get-docker.sh
+   sudo sh get-docker .sh
+   sudo usermod -aG docker ubuntu
+   newgrp docker
+
+7. Configure EC2 and self-hosted runner
+   setting > actions > runner > self-hosted runner > choose OS > then run commands one by one
+
+   mkdir actions-runner && cd actions-runner
+   curl -o actions-runner-linux-x64-2.304.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.304.0/actions-runner-linux-x64-2.304.0.tar.gz
+   echo "292e8770bdeafca135c2c06cd5426f9dda49a775568f45fcc25cc2b576afc12f  actions-runner-linux-x64-2.304.0.tar.gz" | shasum -a 256 -c
+   tar xzf ./actions-runner-linux-x64-2.304.0.tar.gz
+   ./config.sh --url https://github.com/SiddharthTyagi119/sensorfaultdetection --token AMNVEO3UJCHA4OOXBAPVHGLENZ4Z2
+   ./run.sh
+   runs-on: self-hosted
+
+8. Setup github secrets
+AWS_ACCESS_KEY_ID
+AWS_ECR_LOGIN_URI
+AWS_REGION
+AWS_SECRET_ACCESS_KEY
+ECR_REPOSITORY_NAME
+MONGO_DB_URL
+
+
+
+
+
+
+
+
+
