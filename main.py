@@ -1,8 +1,8 @@
 from sensor.configuration.mongo_db_connection import MongoDBClient
-from sensor.exception import SensorException
+from sensor.exception import ApplicationException
 import os,sys
 from sensor.logger import logging
-from sensor.pipeline import training_pipeline
+from sensor.pipeline import trainning_pipeline
 from sensor.pipeline.trainning_pipeline import TrainPipeline
 import os
 from sensor.utils.main_utils import read_yaml_file

@@ -1,4 +1,4 @@
-from sensor.constant.s3_bucket import TRAINING_BUCKET_NAME, PREDICTION_BUCKET_NAME, AWS_BUCKET_URL
+from sensor.constant.s3_bucket import TRAINING_BUCKET_NAME, PREDICTION_BUCKET_NAME
 import os
 class S3Sync:
 
