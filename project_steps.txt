@@ -20,8 +20,6 @@ config_entity>>artifct_entity>>sensor_data.py>>data_ingestion.py>>training_pipel
 Data validation-
 [constant>>schema.yml>>config_entity,artifact_entity>>utils.py>>data_validation.py>>training_pipeline.py>>main.py]
 
-
-
 Data Transformation-
 [constants>>configurations>>utils>>config_entity>>artifact_entity>>estimator.py>>data_transformation>>training_pipeline.py>>main.py]
 
