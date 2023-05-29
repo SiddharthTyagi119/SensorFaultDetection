@@ -25,3 +25,9 @@ Data Transformation-
 
 Model Trainer-
 [getdata.py>>constant>>configurations>>config_entity>>artifact_entity>>estimator.py>>classification_metrics.py>>model_trainer.py>>training_pipeline.py>>main.py]
+
+Model evaluation-
+[constant>>config_entity>>artifact_entity>>estimator.py>>evaluation.py>>training_pipeline>>main.py]
+
+Model Pusher-
+[constant>>config_entity>>artifact_entity>>model_pusher>>training_pipeline>>main.py]
